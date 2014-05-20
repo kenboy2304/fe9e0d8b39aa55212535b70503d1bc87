@@ -1,0 +1,32 @@
+﻿@model Cdnvn.Phim.Entities.Category
+
+@{
+    ViewBag.Current = Model;
+    var page = 0;
+    var size = 9;
+    if(!Request.QueryString["page"].IsEmpty())
+    {
+        page = Convert.ToInt32(Request.QueryString["page"]);
+    }
+    if(!Request.QueryString["size"].IsEmpty())
+    {
+        size = Convert.ToInt32(Request.QueryString["size"]);
+    }
+    ViewBag.Current = Model.SEOName;
+}
+
+<h1 class="cat-title">@Model.Name</h1>
+@if(string.IsNullOrWhiteSpace(Model.SEOName))
+{
+    <h2>DANH MỤC KHÔNG TỒN TẠI</h2>
+}
+else
+{
+    @Html.Action("_NewsFilm","Film", new{category=Model.SEOName, page=page,size=size})
+}
+
+@section metaTags
+{
+    @Html.Action("_HeadMeta","Home", new {title =Model.Name, des = Model.MetaDescription, keyword = Model.MetaKeyword, url = Request.RawUrl})
+}
+

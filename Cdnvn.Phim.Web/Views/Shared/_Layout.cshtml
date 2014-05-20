@@ -1,0 +1,82 @@
+﻿@using System.Configuration
+<!doctype html>
+<html lang="vi" itemscope itemtype="http://schema.org/Article">
+<head>
+    <meta charset="UTF-8">
+    @RenderSection("metaTags", required: false)
+    <link rel="stylesheet" href="/Themes/Default/Content/style.css">
+    <link rel="icon" href="">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/Themes/Default/Content/js/theme.js"></script>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="inner">
+            <ul>
+                <!-- top-menu -->
+                @Html.Partial("_Menu")
+            </ul>
+            <!-- /top-menu -->
+        </div>
+        <a href="#" class="btn show-menu"></a>
+        <a href="#" class="btn close-menu"></a>
+    </header>
+    <!-- /header -->
+
+    <!-- main-wrapper -->
+    <section id="main-wrapper">
+        <!-- #left-content -->
+        <aside id="left-content">
+            <!-- .left-content-inner -->
+            <div class="inner">
+                <div class="brand">
+                    <a href="#">
+                        <img src="/Themes/Default/Content/images/logo.png" alt="#"></a>
+                </div>
+                <!-- /.brand -->
+
+                <div class="search">
+                    <form class="form search-form" action="#" method="get">
+                        <input type="text" name="s" class="s-input" placeholder="tìm kiếm..." />
+                        <input type="submit" name="do" value="search" class="s-submit" />
+                    </form>
+                </div>
+                <!-- /.search -->
+
+                @Html.Action("_CategoryLayout", "Category", new { current = ViewBag.Current })
+                <div class="copyright">
+                    <div class="fb-like-box" data-href="https://www.facebook.com/PhimCoDoc" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="true" data-height="63"></div>
+                    @*  <p>&copy; 2013 - Phim Cơ Đốc</p>*@
+                </div>
+                <!-- /.copyright -->
+            </div>
+            <!-- /.left-content-inner -->
+        </aside>
+        <!-- /#left-content-->
+
+        <!-- #right-content -->
+        <aside id="right-content" class="detail">
+            <!-- .right-content-inner -->
+            <div class="inner">
+                @RenderBody()
+            </div>
+            <!-- /.-inner -->
+        </aside>
+        <!-- /#right-content-->
+    </section>
+    <!-- /#main-wrapper-->
+
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1&appId=@ConfigurationManager.AppSettings["AppId"]";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

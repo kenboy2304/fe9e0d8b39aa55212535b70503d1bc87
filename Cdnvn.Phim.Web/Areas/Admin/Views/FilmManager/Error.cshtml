@@ -1,0 +1,116 @@
+﻿@model PagedList.IPagedList<Cdnvn.Phim.Entities.Film>
+@{
+    ViewBag.Title = "Error";
+}
+
+<h2>Phim bị lỗi đường dẫn</h2>
+
+<div class="t-widget t-grid" id="Grid">
+    <table cellspacing="0">
+        <colgroup>
+            <col style="width: 10px; text-align: center;">
+            <col style="width: 150px">
+            <col style="width: 400px">
+            <col style="width: 100px">
+            <col>
+        </colgroup>
+        <thead class="t-grid-header">
+            <tr>
+                <th class="t-header" scope="col"></th>
+                <th class="t-header" scope="col">Hình Ảnh</th>
+                <th class="t-header" scope="col">Tên Phim</th>
+                <th class="t-header" scope="col">Số tập</th>
+                <th class="t-header" scope="col"><span class="t-link">&nbsp;</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr style="text-align: center;">
+                    <td style="text-align: center">@Html.CheckBox("Published", item.Published,new{style="disabled=disabled", @value =item.Id, @class ="pub"})</td>
+                    <td style="text-align: left">
+                        @if(item.FilmParts!=null&&item.FilmParts.Any())
+                        {
+                            <img src=@item.ImageUrl width="150" />
+                        }
+                    </td>
+                    <td style="text-align: left">
+                        @item.Name
+                    </td>
+                    <td style="text-align: left">
+                        @if(item.FilmParts!=null && item.FilmParts.Any())
+                        {
+                            <span>@item.FilmParts.Count tập</span>
+                        }
+                        else
+                        {
+                            <span>Chưa có</span>
+                        }
+                    </td>
+                    <td>
+                        <a class="t-button t-grid-viewDetails" href="/Admin/FilmManager/Edit/@item.Id">Sửa</a>
+                        <a class="t-button t-grid-viewDetails" href="/Admin/FilmManager/ErrorDetails/@item.Id">Sửa hỏng</a>
+                    </td>
+                </tr>
+            }
+            
+        </tbody>
+    </table>
+</div>
+
+@{
+    var min = Model.PageNumber - 4;
+    var max = Model.PageNumber + 4;
+}
+@{
+    if (min <= 0)
+    {
+        max = max - min + 1;
+        min = 1;
+    }
+    if (max >= Model.PageCount)
+    {
+        min = min - (max - Model.PageCount);
+        max = Model.PageCount;
+    }
+    if (min <= 0)
+    {
+        min = 1;
+    }
+}
+
+<div class="paging">
+
+    @if (Model.IsFirstPage)
+    {
+        <span>Đầu</span>
+        <span><</span>
+    }
+    else
+    {
+        <a href="?page=1&size=@Model.PageSize">Đầu</a>
+        <a href="?page=@(Model.PageNumber - 1)&size=@Model.PageSize"><</a>
+    }
+
+    @for (var i = min; i <= max; i++)
+    {
+        if (i != Model.PageNumber)
+        {
+        <a href="?page=@i&size=@Model.PageSize">@i</a>
+        }
+        else
+        {
+        <span>@i</span>
+        }
+    }
+    @if (Model.IsLastPage)
+    {
+        <span>></span>
+        <span>Cuối</span>
+    }
+    else
+    {
+        <a href="?page=@(Model.PageNumber + 1)&size=@Model.PageSize">></a>
+        <a href="?page=@(Model.PageCount)&size=@Model.PageSize">Cuối</a>
+    }
+</div>

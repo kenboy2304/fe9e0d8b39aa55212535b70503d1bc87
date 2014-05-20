@@ -1,0 +1,33 @@
+﻿@model Cdnvn.Phim.Entities.Category
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Category</legend>
+
+        @Html.Partial("_formEdit", Model)
+       
+        <p>
+             @Html.HiddenFor(model => model.Id)
+             @Html.HiddenFor(model=>model.CreatedDate)
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

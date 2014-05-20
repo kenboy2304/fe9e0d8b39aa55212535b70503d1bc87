@@ -1,0 +1,65 @@
+﻿@using Cdnvn.Phim.Entities
+@model IEnumerable<Cdnvn.Phim.Entities.Category>
+
+@{
+    var checkeds = (List<Category>)ViewBag.Checked;
+    var a = 1;
+    
+}
+
+@helper CheckValue(int id, List<Category> checkeds)
+{
+    var checker = false;
+    if (checkeds != null && checkeds.Any())
+    {
+        foreach (var c in checkeds)
+        {
+            if (c.Id == id)
+            {
+                checker = true;
+            }
+        }
+    }
+    if (checker)
+    {
+    <input type="checkbox" name="Cat" value="@id" checked="checked" /> 
+    }
+    else
+    {
+    <input type="checkbox" name="Cat" value="@id" /> 
+    }
+    
+    
+}
+
+@helper ShowCategory(IEnumerable<Cdnvn.Phim.Entities.Category> categories, List<Category> checkeds, string parent="")
+{
+    
+    foreach (var category in categories)
+    {
+        var name = "";
+        <div>
+                @CheckValue(category.Id, checkeds)
+                @if(category.Published)
+                {
+                    name = parent + category.Name;
+                }
+                else
+                {
+                    name = parent + "<span style='color: gainsboro; text-decoration: line-through;'>" + category.Name + "</span >";
+                }
+            @Html.Raw(name)
+            </div>
+        if (category.CategoryChildrens.Any())
+        {
+            @ShowCategory(category.CategoryChildrens, checkeds, name + ">")
+        }
+    }
+}
+
+<div class="editor-label">
+        @Html.Label("Catalogs", "Catalogs")
+    </div>
+    <div class="editor-field editor-categories">
+        @ShowCategory(Model, checkeds)
+    </div>

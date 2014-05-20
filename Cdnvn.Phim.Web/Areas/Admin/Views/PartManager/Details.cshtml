@@ -1,0 +1,78 @@
+﻿@model Cdnvn.Phim.Entities.FilmPart
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>FilmPart</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.YoutubeId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.YoutubeId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Image)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Image)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Url)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Url)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Film.ImageUrl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Film.ImageUrl)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SEOName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SEOName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Published)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Published)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ModifiedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Order)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Order)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

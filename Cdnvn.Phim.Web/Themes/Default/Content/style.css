@@ -1,0 +1,618 @@
+/*
+	Author: CDNVN
+	Copyright: 2013 - Phim Cơ Đốc
+	Description: One product of CDNVN;
+*/
+
+/*RESET CSS*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,vietnamese);
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+input, textarea, button, body {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-size: 13px;
+    background: #ececec;
+}
+
+.clear-fix {
+    clear: both;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+fieldset {
+    padding: 20px;
+}
+fieldset ol li{
+    margin: 10px;
+    list-style: none;
+}
+fieldset ol li label{
+    display: inline-block;
+    width: 100px;
+}
+fieldset ol li input{
+    padding: 5px;
+}
+fieldset ol li input[type="text"],fieldset ol li input[type="password"]{
+    width: 200px;
+}
+
+/* 01. FORM */
+.form input {
+    border: none;
+    padding: 5px 10px;
+}
+
+/* 02. THUMBNAIL */
+.thumbnail {
+    overflow: hidden;
+    font-size: 0px;
+    position: relative;
+}
+
+    .thumbnail a.thumbnail-hover {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        -webkit-transition: background .25s;
+        -moz-transition: background .25s;
+        -ms-transition: background .25s;
+        -o-transition: background .25s;
+        transition: background .25s;
+    }
+
+        .thumbnail a.thumbnail-hover:hover {
+            background: rgba(0,0,0,.4);
+        }
+
+/* 03. ENTRY */
+.entry {
+    padding: 15px;
+}
+
+.entry h1 {
+    margin-top: 10px;
+}
+.entry-title a {
+    color: #151515;
+    font-size: 14px;
+    display: block;
+    height: 40px;
+}
+
+.entry-title a, .entry-metadata a {
+    -webkit-transition: color .25s;
+    -moz-transition: color .25s;
+    -ms-transition: color .25s;
+    -o-transition: color .25s;
+    transition: color .25s;
+}
+.brand {
+    text-align: center;
+}
+    .entry-title a:hover {
+        color: #d5452d;
+    }
+
+.entry-metadata {
+    margin-top: 7px;
+}
+
+    .entry-metadata li, .entry-metadata li a {
+        text-transform: capitalize;
+        color: #5f5f5f;
+        float: left;
+    }
+
+        .entry-metadata li a:hover {
+            color: #d5452d;
+        }
+
+        .entry-metadata li span.icon {
+            display: block;
+            float: left;
+            background: url("images/sprite.png") no-repeat;
+            margin-right: 4px;
+            position: relative;
+        }
+
+        .entry-metadata li.view span.icon {
+            width: 19px;
+            height: 10px;
+            background-position: -103px -12px;
+            top: 4px;
+        }
+
+        .entry-metadata li.date span.icon {
+            width: 12px;
+            height: 12px;
+            background-position: -40px -10px;
+            top: 3px;
+        }
+
+        .entry-metadata li.cat span.icon {
+            width: 12px;
+            height: 12px;
+            background-position: -71px -10px;
+            top: 3px;
+        }
+
+/* 04. BUTTON */
+.btn {
+    color: white;
+    background: #d5452d;
+    /*padding: 5px 13px;*/
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+#main-wrapper {
+    position: relative;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: #d5452d;
+    position: fixed;
+    top: -47px;
+    left: 0px;
+    z-index: 1;
+}
+
+    header .inner {
+        padding: 0 30px;
+    }
+
+    header ul li {
+        display: inline-block;
+        margin-right: 30px;
+    }
+
+    header a {
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        -ms-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+    }
+
+    header ul li a {
+        text-transform: uppercase;
+        color: white;
+        font-weight: 600;
+    }
+
+        header ul li a:hover {
+            color: #151515;
+        }
+
+.show-menu, .close-menu {
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    background: url("images/menu-sprite.png") no-repeat;
+    background-position: -50px 0px;
+}
+
+.show-menu {
+    background-color: #d5452d;
+}
+
+    .show-menu:hover {
+        background-position: -100px 0px;
+    }
+
+.close-menu {
+    display: none;
+    background-position: 0px 0px;
+}
+
+    .close-menu:hover {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+/* LEFT CONTENT*/
+#left-content {
+    width: 300px;
+    float: left;
+    background: #151515;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+    #left-content .inner {
+        padding: 50px 25px;
+    }
+
+/* Search Form */
+.search-form {
+    margin-top: 30px;
+    background: white;
+}
+
+    .search-form input.s-submit {
+        widows: 14px;
+        height: 18px;
+        background: url("images/sprite.png") no-repeat;
+        background-position: 0px -5px;
+        text-indent: -99999px;
+        cursor: pointer;
+        position: relative;
+        top: 5px;
+    }
+
+    .search-form input.s-input {
+        width: 200px;
+    }
+
+/* Menu */
+.menu {
+    margin-top: 60px;
+}
+
+    .menu li {
+        margin: 3px 0;
+        position: relative;
+    }
+
+    .menu a {
+        color: white;
+        text-transform: uppercase;
+        position: relative;
+        left: 0px;
+        -webkit-transition: left .25s;
+        -moz-transition: left .25s;
+        -ms-transition: left .25s;
+        -o-transition: left .25s;
+        transition: left .25s;
+        clear: both;
+    }
+
+    .menu li:hover a {
+        left: 10px;
+        color: #d5452d;
+    }
+
+    .menu li:hover span {
+        display: block;
+    }
+
+    .menu li span, .menu li.current span {
+        display: block;
+        width: 13px;
+        height: 22px;
+        background: url("images/sprite.png") no-repeat;
+        background-position: -135px 0;
+        position: absolute;
+        left: -27px;
+    }
+
+    .menu li.current a {
+        color: #d5452d;
+    }
+
+    .menu li span {
+        display: none;
+    }
+
+/* Copyright */
+.copyright {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    color: #858585;
+}
+
+/* RIGHT CONTENT */
+#right-content {
+    float: left;
+    margin: 35px 0 50px 330px;
+}
+
+h1.cat-title {
+	text-transform: uppercase;
+	margin-left: 12px;
+	font-size: 20px;	
+	color: #151515;
+}
+#post-loop {
+    overflow: hidden;
+}
+
+    #post-loop > li {
+        float: left;
+        margin: 15px 12px;
+        background: white;
+        width: 280px;
+        height: 245px;
+    }
+
+article.item .thumbnail {
+    width: 280px;
+    height: 158px;
+}
+
+    article.item .thumbnail img {
+        max-width: 280px;
+        height: auto;
+    }
+
+article.item .entry-metadata li.view {
+    float: right;
+}
+
+.load-more {
+    display: block;
+    margin-left: 12px;
+    width: 120px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    -webkit-transition: background .3s;
+    -moz-transition: background .3s;
+    -ms-transition: backgroundr .3s;
+    -o-transition: background .3s;
+    transition: background .3s;
+}
+
+    .load-more:before {
+        display: block;
+        content: "/";
+        border-right: 1px solid #ba2910;
+        height: 35px;
+        width: 35px;
+        float: left;
+        background: url("images/sprite.png") no-repeat;
+        background-position: -159px 3px;
+        text-indent: -99999px;
+    }
+
+    .load-more:hover {
+        background: #151515;
+    }
+
+        .load-more:hover::before {
+            border-right: 1px solid #151515;
+        }
+
+.loading:before {
+    background: url("images/loading.gif") no-repeat center center !important;
+}
+
+.paging {
+    padding: 12px;
+}
+
+    .paging a, .paging span {
+        color: white;
+        text-align: center;
+        display: inline-block;
+        min-width: 13px;
+        padding: 5px;
+        text-underline: none;
+        -webkit-transition: background .3s;
+        -moz-transition: background .3s;
+        -ms-transition: backgroundr .3s;
+        -o-transition: background .3s;
+        transition: background .3s;
+    }
+
+    .paging span {
+        background: #151515;
+    }
+
+    .paging a {
+        background: #ba2910;
+    }
+
+        .paging a:hover {
+            background: #A5A5A6;
+        }
+
+
+/*SINGLE*/
+.detail div.frame {
+    background: white;
+    width: 585px;
+    padding-bottom: 20px;
+    float: left;
+    margin: 0px 12px;
+}
+
+    .detail div.frame .entry-title a {
+        height: auto;
+    }
+
+    .detail div.frame .description, .detail div.frame .comment {
+        clear: both;
+        padding: 0 15px;
+        margin-top: 20px;
+    }
+
+        .detail div.frame .comment h4 {
+            margin-bottom: 5px;
+        }
+
+.detail .entry-part {
+    padding: 5px 0;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    position: relative;
+}
+.detail .entry-part .details-fb-like {
+
+    position: absolute;
+    right: 0;
+    top: 7px;
+    background: white;
+}
+.detail .entry-part a.part, .detail .entry-part span.part-active {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    line-height: 25px;
+
+}
+.detail .entry-part a.part {
+    background: #D5452D;
+}
+
+.detail .entry-part a.part:hover, .detail .entry-part span.part-active {
+    background: #1A0F15;
+}
+
+.detail .entry-metadata li {
+
+}
+.date, .cat, .view {
+    margin-right: 30px;
+}
+.fb-box {
+    float: right !important;
+}
+
+/* Tab Desciption And Share */
+#tabs {
+	padding: 0 15px;
+	margin-top: 15px;
+	
+}
+
+#tabs .tab-navigation {
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+#tabs .tab-navigation a {
+	color: black;
+	float: left;
+	margin-right: 15px;
+}
+
+#tabs .tab-navigation a:hover, #tabs .tab-navigation a.current {
+	border-bottom: 2px solid #d5452d;
+}
+
+#share li {
+	display: inline-block;
+}
+
+#share li a {
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url("images/social_sprite.png") no-repeat;
+	text-indent: -99999px;
+}
+
+#share li a.fb {
+	background-position: 0px -150px;
+}
+
+#share li a.gg {
+	background-position: 0px -30px;
+}
+
+#share li a.sk {
+	background-position: 0px -60px;
+}
+
+#share li a.in {
+	background-position: 0px -90px;
+}
+
+#share li a.tw {
+	background-position: 0px -120px;
+}
+
+#share input { 
+	margin-top: 10px;
+	padding: 5px 10px;
+	width: 250px;
+}
+.related {
+    width: 280px;
+    padding-bottom: 20px;
+    margin-left: 12px;
+    float: left;
+    background: white;
+}
+
+    .related h2.title {
+        text-transform: uppercase;
+        padding: 12px;
+        color: #d5452d;
+    }
+
+    .related #post-loop {
+        padding: 0 12px;
+    }
+
+        .related #post-loop > li {
+            margin: 10px 0px 0px 0px;
+            padding-bottom: 10px;
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+    .related article.item .thumbnail {
+        width: 103px;
+        height: 58px;
+        float: left;
+    }
+
+        .related article.item .thumbnail img {
+            max-width: 103px;
+            height: auto;
+        }
+
+
+    .related article.item .entry {
+        float: left;
+        width: 143px;
+        padding: 0px;
+        margin-left: 8px;
+    }
+
+    .related article.item .entry-title a {
+        height: auto;
+        font-size: 13px;
+    }
+
+    .related article.item .entry-metadata li {
+        float: none;
+    }
+
+    .related .load-more {
+        margin-top: 20px;
+    }

@@ -1,0 +1,100 @@
+﻿@model Cdnvn.Phim.Entities.FilmPart
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>FilmPart</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.YoutubeId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.YoutubeId)
+            @Html.ValidationMessageFor(model => model.YoutubeId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Image)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Image)
+            @Html.ValidationMessageFor(model => model.Image)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Url)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Url)
+            @Html.ValidationMessageFor(model => model.Url)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FilmId, "Film")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FilmId", String.Empty)
+            @Html.ValidationMessageFor(model => model.FilmId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SEOName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SEOName)
+            @Html.ValidationMessageFor(model => model.SEOName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Published)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Published)
+            @Html.ValidationMessageFor(model => model.Published)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreatedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreatedDate)
+            @Html.ValidationMessageFor(model => model.CreatedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ModifiedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ModifiedDate)
+            @Html.ValidationMessageFor(model => model.ModifiedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Order)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Order)
+            @Html.ValidationMessageFor(model => model.Order)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

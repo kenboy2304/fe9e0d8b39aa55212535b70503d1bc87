@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Cdnvn.Phim.Entities.Category>
+
+
+@{
+    ViewBag.Title = "Category";
+}
+
+<h2>Category</h2>
+
+<p>
+    @Html.ActionLink("Tạo danh mục", "Create", "CategoryManager", null, new { @class = "t-button" })
+</p>
+
+@helper ShowCategory(IEnumerable<Cdnvn.Phim.Entities.Category> categories, string parent="")
+{
+
+    foreach (var category in categories)
+    {
+        var name = "";
+        <tr style="text-align: center;">
+            <td style="text-align: center">@Html.CheckBox("Published", category.Published,new{style="disabled=disabled", @value =category.Id, @class ="pub"})</td>
+            <td style="text-align: left">
+                @if(category.Published)
+                {
+                    name = parent + category.Name;
+                }
+                else
+                {
+                    name = parent + "<span style='color: gainsboro; text-decoration: line-through;'>" + category.Name + "</span >";
+                }
+                @Html.Raw(name)
+            </td>
+            <td style="text-align: left">
+                @category.Order
+            </td>
+            <td>
+                <a class="t-button t-grid-viewDetails" href="/Admin/CategoryManager/Edit/@category.Id">Sửa</a>
+                <a class="t-button t-grid-viewDetails" href="/Admin/CategoryManager/Delete/@category.Id">Xóa</a>
+            </td>
+        </tr>
+        if (category.CategoryChildrens.Any())
+        {
+            @ShowCategory(category.CategoryChildrens, name + ">");
+        }
+    }
+    
+}
+
+<div class="t-widget t-grid" id="Grid">
+    <table cellspacing="0">
+        <colgroup>
+            <col style="width: 10px; text-align: center;">
+            <col style="width: 400px">
+            <col style="width: 50px">
+            <col style="width: 150px">
+            <col>
+        </colgroup>
+        <thead class="t-grid-header">
+            <tr>
+                <th class="t-header" scope="col"></th>
+                <th class="t-header" scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+                <th class="t-header" scope="col"><span class="t-link">Thứ tự</span></th>
+                <th class="t-header" scope="col"><span class="t-link">&nbsp;</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            @ShowCategory(Model)
+        </tbody>
+    </table>
+</div>
+
+<form method="GET" action="/admin/categorymanager/" class="sb_form">
+    <input type="hidden" value="0" class="sb_input" name="id"/>
+</form>
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $(".pub").click(function () {
+
+                var id = $(this).attr("value");
+                $(".sb_input").attr("value", id);
+                $(".sb_form").submit();
+            });
+        });
+    </script>
+}

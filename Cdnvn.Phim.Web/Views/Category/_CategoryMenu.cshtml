@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Cdnvn.Phim.Entities.Category>
+
+<div class="menu">
+    <ul>
+        @foreach (var item in Model)
+        {
+            if (!String.IsNullOrWhiteSpace(ViewBag.CategoryCurrent) && item.SEOName.Equals(ViewBag.CategoryCurrent))
+            {
+            <li class="current"><span></span><a href="/@item.SEOName">@item.Name</a></li>
+            }
+            else
+            {
+            <li><span></span><a href="/@item.SEOName">@item.Name</a></li>
+            }
+
+        }
+    </ul>
+</div>
+<!-- /.menu -->

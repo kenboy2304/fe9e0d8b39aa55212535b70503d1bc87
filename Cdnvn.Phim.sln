@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cdnvn.Phim", "Cdnvn.Phim\Cdnvn.Phim.csproj", "{3A39E41B-B85B-45A5-AA25-6628CC2C552D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cdnvn.Phim.Web", "Cdnvn.Phim.Web\Cdnvn.Phim.Web.csproj", "{E9BE6219-A4F2-4E9E-93C6-AC926F777754}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A39E41B-B85B-45A5-AA25-6628CC2C552D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A39E41B-B85B-45A5-AA25-6628CC2C552D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A39E41B-B85B-45A5-AA25-6628CC2C552D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A39E41B-B85B-45A5-AA25-6628CC2C552D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9BE6219-A4F2-4E9E-93C6-AC926F777754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9BE6219-A4F2-4E9E-93C6-AC926F777754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9BE6219-A4F2-4E9E-93C6-AC926F777754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9BE6219-A4F2-4E9E-93C6-AC926F777754}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

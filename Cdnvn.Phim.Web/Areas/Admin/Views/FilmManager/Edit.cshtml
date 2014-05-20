@@ -1,0 +1,31 @@
+﻿@model Cdnvn.Phim.Entities.Film
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Film</legend>
+
+            @Html.Partial("_formEditFilm", Model)
+        <p>
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.CreatedDate)
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

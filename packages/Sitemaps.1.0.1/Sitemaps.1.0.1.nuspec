@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Sitemaps</id>
+    <version>1.0.1</version>
+    <title>Sitemaps</title>
+    <authors>Daniel Crenna</authors>
+    <owners>Daniel Crenna</owners>
+    <licenseUrl>https://github.com/danielcrenna/sitemaps/blob/master/LICENSE</licenseUrl>
+    <projectUrl>http://github.com/danielcrenna/sitemaps</projectUrl>
+    <iconUrl>http://apitize.com.s3.amazonaws.com/logo_sitemaps.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Smart sitemap generation for .NET web apps</description>
+    <summary>Smart sitemap generation for .NET web apps</summary>
+    <releaseNotes />
+    <copyright>(c) 2011 Daniel Crenna</copyright>
+    <language />
+    <tags>sitemaps xml mvc</tags>
+    <dependencies>
+      <dependency id="Paging" version="1.0.0" />
+    </dependencies>
+  </metadata>
+</package>

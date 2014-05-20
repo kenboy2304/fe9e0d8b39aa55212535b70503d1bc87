@@ -1,0 +1,21 @@
+﻿
+@{
+    
+    var page = 0;
+    var size = 9;
+    if(!Request.QueryString["page"].IsEmpty())
+    {
+        page = Convert.ToInt32(Request.QueryString["page"]);
+    }
+    if(!Request.QueryString["size"].IsEmpty())
+    {
+        size = Convert.ToInt32(Request.QueryString["size"]);
+    }
+}
+
+@Html.Action("_NewsFilm","Film", new {page = page, size = size })
+
+@section metaTags
+{
+    @Html.Action("_HeadMeta");
+}

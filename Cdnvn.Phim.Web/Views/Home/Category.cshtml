@@ -1,0 +1,24 @@
+﻿@model System.String
+
+@{
+    ViewBag.Current = Model;
+    var page = 0;
+    var size = 9;
+    if(!Request.QueryString["page"].IsEmpty())
+    {
+        page = Convert.ToInt32(Request.QueryString["page"]);
+    }
+    if(!Request.QueryString["size"].IsEmpty())
+    {
+        size = Convert.ToInt32(Request.QueryString["size"]);
+    }
+}
+
+@if(string.IsNullOrWhiteSpace(Model))
+{
+    <h2>DANH MỤC KHÔNG TỒN TẠI</h2>
+}
+else
+{
+    @Html.Action("_NewsFilm","Film", new{category=Model, page=page,size=size})
+}

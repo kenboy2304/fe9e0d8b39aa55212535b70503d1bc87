@@ -1,0 +1,50 @@
+﻿@model Cdnvn.Phim.Entities.Film
+
+@{
+    ViewBag.Title = "ErrorDetails";
+}
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+<p>Các đường dẫn báo hỏng</p>
+
+@if (Model.FilmParts != null && Model.FilmParts.Any())
+{
+    foreach (var filmPart in Model.FilmParts)
+    {
+       
+            using (Html.BeginForm("PartEdit","FilmManager",FormMethod.Post))
+             {
+                 <p>
+                     <input type="hidden"  name="id" value="@filmPart.Id"/>
+                     <input type="text" name="yId" value="@filmPart.YoutubeId"/>
+                     <a class="t-button view-film" >Kiểm tra</a>
+                     <button type="submit" class="t-button">Sửa</button>
+                     @if (filmPart.isError)
+                     {
+                         <span style="color: red">
+                             Người dùng báo link hỏng
+                         </span>
+                     }
+                 </p>
+            
+        }
+
+    }
+}
+
+<p>
+    <a class="t-button" href="@Url.Action("Error","FilmManager")">Lỗi khác</a>
+</p>
+
+@section scripts
+{
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $(".view-film").click(function () {
+                var link = $(this).prev().attr("value");
+                var myWindow = window.open("", "Xem thử", "width=580,height=335,location=no,toolbar=no,menubar=no");
+                myWindow.document.write('<iframe width="560" height="315" src="//www.youtube.com/embed/'+link+'" frameborder="0" allowfullscreen></iframe>');
+            });
+        });
+    </script>
+}

@@ -1,0 +1,11 @@
+﻿@model System.Boolean?
+
+@Html.DropDownList("", new SelectList( new[] { 
+new { Value = "true", Text = "Bật" }, 
+new { Value = "false", Text = "Tắt" },
+        }, 
+        "Value", 
+        "Text",
+        
+        Model
+    ))  

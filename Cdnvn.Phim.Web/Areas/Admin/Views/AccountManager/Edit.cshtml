@@ -1,0 +1,42 @@
+﻿@model System.String
+
+@{
+    var rolesUser = Roles.Provider.GetRolesForUser(Model);
+    var roles = Roles.Provider.GetAllRoles();
+    var check = false;
+}
+<h2>@Model</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>RegisterModel</legend>
+        <div>
+            @foreach (var role in roles)
+            {
+                foreach (var r in rolesUser)
+                {
+                    if(r.Equals(role))
+                    {
+                        check = true;
+                    }
+                }
+                <p><input type="checkbox" name="roles" value="@role" checked="@check" /> @role</p>
+                
+                {
+                    check = false;
+                }
+            }
+        </div>
+        <p>
+            <input type="hidden" name="username" value="@Model"/>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

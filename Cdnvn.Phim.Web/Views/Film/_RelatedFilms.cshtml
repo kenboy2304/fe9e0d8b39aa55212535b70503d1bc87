@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Cdnvn.Phim.Entities.Film>
+@{
+    var url = "/{0}.html";
+}
+<div class="related">
+    <h2 class="title">Cùng thể loại</h2>
+    <ul id="post-loop">
+        @foreach (var item in Model)
+        {
+            <li>
+                <article class="item">
+                    <div class="thumbnail">
+                        <a href="@string.Format(url, item.SEOName)" class="thumbnail-hover"></a>
+                        <img src="@item.ImageUrl" alt="#">
+                    </div>
+                    <div class="entry">
+                        <h3 class="entry-title"><a href="@string.Format(url, item.SEOName)">@item.Name</a></h3>
+                    </div>
+                </article>
+            </li>
+        }
+    </ul>
+    <!-- /#post-loop -->
+
+    <a class="load-more btn" onclick="GetNewsItem()">Xem thêm</a>
+</div>
+<!-- /.related -->
+<script type="text/javascript">
+    var skin = 10;
+    function GetNewsItem() 
+    {
+        $.ajax({
+            url: '@Url.Action("_RelatedFilmAjax")?skin=' + skin+'',
+            type: 'GET',
+            dataType: 'json',
+            processData: false,
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                skin = skin + 10;
+                PrintItems(data)
+                
+            },
+            error: function () { alert("loi roi") },
+          
+        });
+        return false;
+    }
+
+    function PrintItems(data) {
+        var r = "";
+        for (var i = 0; i < data.length; i++) {
+            r = r+
+            '<li>' +
+            '<article class="item">' +
+            '<div class="thumbnail">' +
+            '<a href="/'+data[i].SEOName+'.html" class="thumbnail-hover"></a>' +
+            '<img src="' + data[i].ImageUrl + '" alt="#">' +
+            '</div>' +
+            '<div class="entry">' +
+            '<h3 class="entry-title"><a href="/' + data[i].SEOName + '.html">' + data[i].Name + '</a></h3>' +
+            '</div>' +
+            '</article>' +
+            '</li>';
+        }
+        $(r).appendTo("#post-loop");
+        return false;
+    }
+</script>
+
+

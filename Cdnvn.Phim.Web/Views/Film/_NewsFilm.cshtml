@@ -1,0 +1,101 @@
+﻿@model PagedList.IPagedList<Cdnvn.Phim.Entities.Film>
+
+@{
+    var shareUrl = "http://{0}/{1}.html";
+    var host = Request.Url.Host;
+    if(host.Equals("localhost"))
+    {
+        host = "phimcodoc.com";
+    }
+}
+
+<ul id="post-loop">
+    @foreach (var item in Model)
+    {
+        var url ="/{0}.html";
+        <li>
+            <article class="item">
+                <div class="thumbnail">
+                    <a href="@string.Format(url,item.SEOName)" class="thumbnail-hover"></a>
+                    <img src="@item.ImageUrl" alt="@item.Name">
+                </div>
+
+                <div class="entry">
+                    <h3 class="entry-title"><a href="@string.Format(url,item.SEOName)">@item.Name</a></h3>
+                    <ul class="entry-metadata">
+                        <li class="date"><span class="icon"></span>
+                            @if (item.FilmParts != null && item.FilmParts.Any())
+                            {
+                                <span>@item.FilmParts.Count tập </span>
+                            }
+                            else
+                            {
+                                <span>0 tập</span>
+                            }
+                        </li>
+                        <li class="fb-box">
+                            <div class="fb-like" data-href="@string.Format(shareUrl,host, item.SEOName)" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+        </li>
+    }
+</ul>
+<!-- /#post-loop -->
+@{
+    var min = Model.PageNumber - 2;
+    var max = Model.PageNumber + 2;
+}
+@{
+    if (min <= 0)
+    {
+        max = max - min + 1;
+        min = 1;
+    }
+    if (max >= Model.PageCount)
+    {
+        min = min - (max - Model.PageCount);
+        max = Model.PageCount;
+    }
+    if (min <= 0)
+    {
+        min = 1;
+    }
+}
+
+<div class="paging">
+
+    @if (Model.IsFirstPage)
+    {
+        <span>Đầu</span>
+        <span><</span>
+    }
+    else
+    {
+        <a href="?page=1&size=@Model.PageSize">Đầu</a>
+        <a href="?page=@(Model.PageNumber - 1)&size=@Model.PageSize"><</a>
+    }
+
+    @for (var i = min; i <= max; i++)
+    {
+        if (i != Model.PageNumber)
+        {
+        <a href="?page=@i&size=@Model.PageSize">@i</a>
+        }
+        else
+        {
+        <span>@i</span>
+        }
+    }
+    @if (Model.IsLastPage)
+    {
+        <span>></span>
+        <span>Cuối</span>
+    }
+    else
+    {
+        <a href="?page=@(Model.PageNumber + 1)&size=@Model.PageSize">></a>
+        <a href="?page=@(Model.PageCount)&size=@Model.PageSize">Cuối</a>
+    }
+</div>
